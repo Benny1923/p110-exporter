@@ -1,0 +1,12 @@
+devices:
+  - name: MyPlug
+    ip: 192.168.1.2
+    type: P110
+    credential: default
+
+credentials:
+  - name: default
+    username: user@example.com
+    password: 1234567890
+
+interval: 300
