@@ -11,9 +11,9 @@ jobs:
       matrix:
         platform:
           - platform: linux/amd64
-            target: aarch64-unknown-linux-gnu
-          - platform: linux/arm64
             target: x86_64-unknown-linux-gnu
+          - platform: linux/arm64
+            target: aarch64-unknown-linux-gnu
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +28,8 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - run: cp target/${{ matrix.platform.target }}/release/p110-exporter target/release/p110-exporter
+        if: ${{ matrix.platform.target }} == 'aarch64-unknown-linux-gnu'
       - uses: docker/build-push-action@v6
         with:
           platforms: ${{ matrix.platform.platform }}
