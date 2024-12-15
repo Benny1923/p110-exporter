@@ -23,12 +23,12 @@ jobs:
             target: ${{ matrix.platform.target }}
             args: "--locked --release"
             strip: true
+      - run: mkdir -p target/release && cp target/${{ matrix.platform.target }}/release/p110-exporter target/release/p110-exporter
       - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: mkdir -p target/release && cp target/${{ matrix.platform.target }}/release/p110-exporter target/release/p110-exporter
       - uses: docker/build-push-action@v6
         with:
           platforms: ${{ matrix.platform.platform }}
