@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
-      - uses: houseabsolute/actions-rust-cross
+      - uses: houseabsolute/actions-rust-cross@v0
         with:
             target: ${{ matrix.platform.target }}
             args: "--locked --release"
