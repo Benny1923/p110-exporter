@@ -28,8 +28,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: cp target/${{ matrix.platform.target }}/release/p110-exporter target/release/p110-exporter
-        if: ${{ matrix.platform.target }} == 'aarch64-unknown-linux-gnu'
+      - run: mkdir -p target/release && cp target/${{ matrix.platform.target }}/release/p110-exporter target/release/p110-exporter
       - uses: docker/build-push-action@v6
         with:
           platforms: ${{ matrix.platform.platform }}
