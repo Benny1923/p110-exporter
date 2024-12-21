@@ -36,4 +36,4 @@ jobs:
         with:
           platforms: ${{ matrix.platform.platform }}
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ github.ref }}
+          tags: ghcr.io/${{ github.repository }}:${{ github.ref_name }}
