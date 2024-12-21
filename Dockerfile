@@ -1,7 +1,9 @@
 FROM ubuntu
 
+ARG BIN_PATH=target/release/p110-exporter
+
 WORKDIR /app
 
-COPY /tmp/p110-exporter /app/p110-exporter
+COPY $BIN_PATH /app/p110-exporter
 
 CMD ["sh", "-c", "/app/p110-exporter"]
