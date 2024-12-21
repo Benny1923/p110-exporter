@@ -16,6 +16,7 @@ jobs:
             target: aarch64-unknown-linux-gnu
     runs-on: ubuntu-latest
     steps:
+      - run: echo "REPO=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
       - uses: houseabsolute/actions-rust-cross@v0
@@ -36,4 +37,4 @@ jobs:
         with:
           platforms: ${{ matrix.platform.platform }}
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+          tags: ghcr.io/${REPO}:${{ github.ref_name }}
