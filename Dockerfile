@@ -1,9 +1,14 @@
-FROM --platform=$BUILDPLATFORM ubuntu
+FROM rust:1.83 AS build
 
-ARG BIN_PATH=target/release/p110-exporter
+WORKDIR /usr/src/p110-exporter
+COPY src src
+COPY Cargo.toml Cargo.toml
+COPY Cargo.lock Cargo.lock
 
-WORKDIR /app
+RUN cargo build --release
 
-COPY $BIN_PATH /app/p110-exporter
+FROM ubuntu
 
-CMD ["sh", "-c", "/app/p110-exporter"]
+COPY --from=build /usr/src/p110-exporter/target/release/p110-exporter /usr/bin/p110-exporter
+
+CMD ["sh", "-c", "p110-exporter"]
