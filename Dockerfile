@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM --platform=$BUILDPLATFORM ubuntu
 
 ARG BIN_PATH=target/release/p110-exporter
 
