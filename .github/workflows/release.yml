@@ -39,3 +39,4 @@ jobs:
           push: true
           tags: ghcr.io/${{ env.REPO }}:${{ github.ref_name }}
           build-args: BIN_PATH=target/${{ matrix.platform.target }}/release/p110-exporter
+          provenance: false
