@@ -31,12 +31,6 @@ pub struct Credential {
     pub password: String,
 }
 
-impl Into<tapo::ApiClient> for Credential {
-    fn into(self) -> tapo::ApiClient {
-        tapo::ApiClient::new(self.username, self.password)
-    }
-}
-
 impl Config {
     pub fn load_file(path: &str) -> Result<Self, error::Error> {
 

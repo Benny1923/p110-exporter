@@ -21,4 +21,6 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/${{ env.REPO }}:${{ github.ref_name }}
+          tags: |
+            ghcr.io/${{ env.REPO }}:${{ github.ref_name }}
+            ghcr.io/${{ env.REPO }}:latest

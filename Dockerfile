@@ -11,4 +11,6 @@ FROM ubuntu
 
 COPY --from=build /usr/src/p110-exporter/target/release/p110-exporter /usr/bin/p110-exporter
 
+EXPOSE 9200
+
 CMD ["sh", "-c", "p110-exporter"]
